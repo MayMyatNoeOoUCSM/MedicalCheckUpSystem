@@ -7,3 +7,28 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+master_table_names = %w(
+#   prefectures
+#   municipalities
+)
+
+table_names = %w(
+ users
+)
+
+# Clear existing data
+dc = DatabaseCleaner
+dc.strategy = :truncation
+dc.clean_with :truncation, except: master_table_names
+dc.start
+puts "Cleared existing data"
+
+
+
+table_names.each do |table_name|
+    path = Rails.root.join("db", "seeds", Rails.env, "#{table_name}.rb")
+    if File.exist?(path)
+      puts "Creating #{table_name}..."
+      require(path)
+    end
+end

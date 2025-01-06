@@ -61,3 +61,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise"
+gem "byebug"                                         # Rails標準デバッガ
+gem "pry-byebug"                                     # pryでbyebugを利用する, binding.pryが使える
+gem "pry-rails"                          # pryデバッガ。rails consoleでirbからpryへ
+gem "database_cleaner"                               # DBを簡単にtruncateできる
+gem "faker"                                          # ダミーデータ生成
